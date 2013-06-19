@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -48,13 +47,13 @@ db = db.deref()
 
 // execute a couple SQL queries to create the table "foo" and ensure it's empty
 console.log('Creating and/or clearing foo table...')
-SQLite3.sqlite3_exec(db, 'CREATE TABLE foo (bar VARCHAR);', null, null, null)
+SQLite3.sqlite3_exec(db, 'CREATE TABLE foo (bar VARCHAR,val VARCHAR);', null, null, null)
 SQLite3.sqlite3_exec(db, 'DELETE FROM foo;', null, null, null)
 
 // execute a few INSERT queries into the "foo" table
 console.log('Inserting bar 5 times...')
 for (var i = 0; i < 5; i++) {
-  SQLite3.sqlite3_exec(db, 'INSERT INTO foo VALUES(\'baz' + i + '\');', null, null, null)
+  SQLite3.sqlite3_exec(db, 'INSERT INTO foo (bar,val) VALUES(\'baz' + i + '\',\'value'+ i +'\');', null, null, null)
 }
 
 // we can also run queries asynchronously on the thread pool. this is good for
